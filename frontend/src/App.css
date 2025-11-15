@@ -1,42 +1,183 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* * --------------------------------
+ * Variabel Tema (Terpusat)
+ * --------------------------------
+*/
+
+/* Mode Terang (Default) */
+:root {
+  --bg-color: hsl(0, 0%, 100%);
+  --text-color: hsl(240, 10%, 3.9%);
+  --card-bg: hsl(0, 0%, 99%);
+  --border-color: hsl(240, 5.9%, 90%);
+  --input-bg: hsl(0, 0%, 96%);
+  --primary-color: hsl(240, 5.9%, 10%);
+  --primary-text-color: hsl(0, 0%, 100%);
+  --link-color: hsl(240, 5.9%, 10%);
+  --shadow-color: hsl(240, 10%, 3.9%);
+}
+
+/* Mode Gelap (Berdasarkan Pengaturan Sistem) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: hsl(240, 10%, 3.9%);
+    --text-color: hsl(0, 0%, 98%);
+    --card-bg: hsl(240, 3.7%, 15.9%);
+    --border-color: hsl(240, 3.7%, 25.9%);
+    --input-bg: hsl(240, 3.7%, 20.9%);
+    --primary-color: hsl(0, 0%, 98%);
+    --primary-text-color: hsl(240, 10%, 3.9%);
+    --link-color: hsl(0, 0%, 98%);
+    --shadow-color: hsl(240, 10%, 3.9%);
+  }
+}
+
+/* * --------------------------------
+ * Gaya Dasar (Global)
+ * --------------------------------
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  /* Transisi mulus untuk pergantian tema */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* * --------------------------------
+ * Tata Letak Halaman Autentikasi
+ * --------------------------------
+*/
+
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.auth-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem; /* 12px */
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px; /* Lebar form yang nyaman */
+  box-shadow: 0 4px 12px hsla(var(--shadow-color), 0.05);
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* * --------------------------------
+ * Komponen Form
+ * --------------------------------
+*/
+
+.auth-header {
   text-align: center;
+  margin-bottom: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.auth-header h1 {
+  font-size: 1.75rem; /* 28px */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.auth-header p {
+  font-size: 1rem; /* 16px */
+  opacity: 0.8;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* Jarak antar grup form */
 }
 
-.card {
-  padding: 2em;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Jarak antara label dan input */
 }
 
-.read-the-docs {
-  color: #888;
+.form-group label {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+}
+
+.form-group input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem; /* 8px */
+  padding: 0.75rem; /* 12px */
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.form-group input:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+/* * --------------------------------
+ * Tombol & Tautan
+ * --------------------------------
+*/
+
+.btn {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: opacity 0.2s ease, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.auth-footer a {
+  color: var(--link-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
 }
