@@ -1,14 +1,22 @@
 {
-  "name": "backend",
+  "name": "zamato-backend",
   "version": "1.0.0",
+  "private": true,
+  "description": "API backend untuk aplikasi ZAMATO.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "express",
+    "mongodb",
+    "api",
+    "zamato"
+  ],
+  "author": "Nama Anda (atau biarkan kosong)",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
@@ -20,5 +28,8 @@
     "mongoose": "^8.19.3",
     "multer": "^2.0.2",
     "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
